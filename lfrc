@@ -6,7 +6,7 @@ set shellopts '-eu'
 set ifs "\n"
 set scrolloff 10
 set icons
-# set drawbox
+set drawbox
 set incsearch
 set smartcase
 set ignorecase
@@ -17,7 +17,6 @@ set info 'size'
 set preview
 set previewer ~/.config/lf/previewer
 set dircounts
-set drawbox
 
 
 # ========== Key Bindings ==========
