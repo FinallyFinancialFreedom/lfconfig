@@ -1,7 +1,7 @@
 # most from https://github.com/rockyzhang24/dotfiles/blob/master/.config/lf/
 # ========== General settings ==========
 
-set shell bash
+set shell zsh
 set shellopts '-eu'
 set ifs "\n"
 set scrolloff 10
@@ -38,10 +38,11 @@ map C $code $f
 map R reload
 map a touch
 map A mkdir
-map \$ shellcmd
-map | shell
+map \$ shell
 map ? help
 map i $bat $f
+map J push :jump<space>
+map zl push :jumplist<enter>
 
 # ========== Functions ==========
 
@@ -52,3 +53,12 @@ cmd open &{{
   esac
 }}
 
+cmd jump %{{
+	result="$(zoxide query $@ | sed 's/\\/\\\\/g;s/"/\\"/g')"
+	lf -remote "send $id cd \"$result\""
+}}
+
+cmd jumplist ${{
+	result="$(zoxide query -i | sed 's/\\/\\\\/g;s/"/\\"/g')"
+	lf -remote "send $id cd \"$result\""
+}}
