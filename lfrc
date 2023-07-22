@@ -17,6 +17,7 @@ set info 'size'
 set preview
 set previewer ~/.config/lf/previewer
 set dircounts
+set cursorpreviewfmt ""
 
 
 # ========== Key Bindings ==========
