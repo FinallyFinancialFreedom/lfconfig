@@ -45,11 +45,11 @@ map zl push :jumplist<enter>
 
 # ========== Functions ==========
 
-cmd open &{{
-  case $(file --mime-type "$(readlink -f $f)" -b) in
-    text/*|application/json|inode/x-empty|application/octet-stream) lf -remote "send $id \$$EDITOR \$fx";;
-    *) for f in $fx; do open $f > /dev/null 2> /dev/null & done;;
-  esac
+cmd open ${{
+    case $(file --mime-type -Lb $f) in
+        text/*) vi $fx;;
+        *) for f in $fx; do xdg-open $f > /dev/null 2> /dev/null & done;;
+    esac
 }}
 
 cmd jump %{{
